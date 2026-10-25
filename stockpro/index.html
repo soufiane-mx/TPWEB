@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockPro – Gestion de stock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- En-tête de l'application -->
+    <header class="entete">
+        <div class="logo">Stock<span>Pro</span></div>
+        <nav class="menu">
+            <a href="#" class="actif">Tableau de bord</a>
+            <a href="#">Produits</a>
+            <a href="#">Fournisseurs</a>
+            <a href="#">Commandes</a>
+        </nav>
+        <button class="btn btn-primaire">+ Nouveau produit</button>
+    </header>
+
+    <div class="conteneur">
+        <!-- Barre latérale : Filtres -->
+        <aside class="filtres">
+            <h2>Catégories</h2>
+            <ul>
+                <li><a href="#" class="actif">Toutes</a></li>
+                <li><a href="#">Informatique</a></li>
+                <li><a href="#">Mobilier</a></li>
+                <li><a href="#">Fournitures</a></li>
+            </ul>
+            <h2>Statut</h2>
+            <ul>
+                <li><a href="#">En stock</a></li>
+                <li><a href="#">Stock faible</a></li>
+                <li><a href="#">Rupture</a></li>
+            </ul>
+            <div class="aide">
+                <strong>Astuce :</strong> un produit passe en « stock faible » lorsque sa quantité est inférieure à 10.
+            </div>
+        </aside>
+
+        <!-- Contenu principal -->
+        <main class="contenu">
+            <h1 class="titre-page">Tableau de bord</h1>
+            
+            <!-- Statistiques clés (Flexbox) -->
+            <section class="stats">
+                <article class="carte-stat">
+                    <h3>Produits référencés</h3>
+                    <p class="valeur">128</p>
+                    <p class="tendance hausse">+12 ce mois</p>
+                </article>
+                <article class="carte-stat">
+                    <h3>Valeur du stock</h3>
+                    <p class="valeur">48 520 €</p>
+                    <p class="tendance hausse">+4,2 %</p>
+                </article>
+                <article class="carte-stat">
+                    <h3>Stock faible</h3>
+                    <p class="valeur">7</p>
+                    <p class="tendance baisse">+2 depuis hier</p>
+                </article>
+                <article class="carte-stat">
+                    <h3>Ruptures</h3>
+                    <p class="valeur">3</p>
+                    <p class="tendance baisse">À commander</p>
+                </article>
+            </section>
+
+            <!-- Message d'alerte -->
+            <section class="alerte">
+                <p><strong>Attention :</strong> 3 produits sont en rupture de stock.</p>
+                <!-- Utilisation de sr-only pour l'accessibilité -->
+                <button class="fermer">×<span class="sr-only">Fermer l'alerte</span></button>
+            </section>
+
+            <!-- Grille des produits (CSS Grid) -->
+            <section class="produits">
+                <h2>Inventaire</h2>
+                <div class="grille-produits">
+                    <article class="produit en-stock" id="produit-vedette">
+                        <span class="badge">En stock</span>
+                        <h3>Clavier mécanique</h3>
+                        <p class="ref">REF-1024</p>
+                        <p class="categorie">Informatique</p>
+                        <p class="quantite">Quantité : <strong>45</strong></p>
+                        <p class="prix">89,90 €</p>
+                        <!-- Donnée masquée par défaut (Exercice 8) -->
+                        <p class="prix-achat">Prix d'achat : 52,00 €</p>
+                        <div class="actions">
+                            <button class="btn">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </article>
+
+                    <article class="produit stock-faible">
+                        <span class="badge">Stock faible</span>
+                        <h3>Souris sans fil</h3>
+                        <p class="ref">REF-1031</p>
+                        <p class="categorie">Informatique</p>
+                        <p class="quantite">Quantité : <strong>8</strong></p>
+                        <p class="prix">29,90 €</p>
+                        <p class="prix-achat">Prix d'achat : 14,50 €</p>
+                        <div class="actions">
+                            <button class="btn">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </article>
+
+                    <article class="produit rupture">
+                        <span class="badge">Rupture</span>
+                        <h3>Écran 27 pouces</h3>
+                        <p class="ref">REF-2040</p>
+                        <p class="categorie">Informatique</p>
+                        <p class="quantite">Quantité : <strong>0</strong></p>
+                        <p class="prix">249,00 €</p>
+                        <p class="prix-achat">Prix d'achat : 180,00 €</p>
+                        <div class="actions">
+                            <button class="btn">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </article>
+
+                    <article class="produit en-stock">
+                        <span class="badge">En stock</span>
+                        <h3>Chaise ergonomique</h3>
+                        <p class="ref">REF-3002</p>
+                        <p class="categorie">Mobilier</p>
+                        <p class="quantite">Quantité : <strong>12</strong></p>
+                        <p class="prix">199,00 €</p>
+                        <p class="prix-achat">Prix d'achat : 120,00 €</p>
+                        <div class="actions">
+                            <button class="btn">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </article>
+
+                    <article class="produit stock-faible">
+                        <span class="badge">Stock faible</span>
+                        <h3>Lampe de bureau LED</h3>
+                        <p class="ref">REF-3110</p>
+                        <p class="categorie">Mobilier</p>
+                        <p class="quantite">Quantité : <strong>3</strong></p>
+                        <p class="prix">39,90 €</p>
+                        <p class="prix-achat">Prix d'achat : 18,00 €</p>
+                        <div class="actions">
+                            <button class="btn">Modifier</button>
+                            <!-- Correction : chevron ouvrant ajouté -->
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </article>
+
+                    <article class="produit archive">
+                        <span class="badge">Archivé</span>
+                        <h3>Imprimante laser (ancien modèle)</h3>
+                        <p class="ref">REF-5001</p>
+                        <p class="categorie">Informatique</p>
+                        <p class="quantite">Quantité : <strong>0</strong></p>
+                        <p class="prix">159,00 €</p>
+                        <p class="prix-achat">Prix d'achat : 95,00 €</p>
+                        <div class="actions">
+                            <button class="btn">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Tableau des derniers mouvements -->
+            <section class="mouvements">
+                <h2>Derniers mouvements</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Référence</th>
+                            <th>Produit</th>
+                            <th>Type</th>
+                            <th>Quantité</th>
+                            <th class="col-operateur">Opérateur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>14/10/2026</td><td>REF-1024</td><td>Clavier mécanique</td>
+                            <td><span class="type entree">Entrée</span></td><td>+20</td>
+                            <td class="col-operateur">K. Benali</td>
+                        </tr>
+                        <tr>
+                            <td>14/10/2026</td><td>REF-2040</td><td>Écran 27 pouces</td>
+                            <td><span class="type sortie">Sortie</span></td><td>-5</td>
+                            <td class="col-operateur">S. Martin</td>
+                        </tr>
+                        <tr>
+                            <td>13/10/2026</td><td>REF-3110</td><td>Lampe de bureau LED</td>
+                            <td><span class="type sortie">Sortie</span></td><td>-7</td>
+                            <td class="col-operateur">K. Benali</td>
+                        </tr>
+                        <tr>
+                            <td>12/10/2026</td><td>REF-3002</td><td>Chaise ergonomique</td>
+                            <td><span class="type entree">Entrée</span></td><td>+10</td>
+                            <td class="col-operateur">L. Haddad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Pied de page -->
+    <footer class="pied">
+        <p>© 2026 StockPro – TP HTML / CSS</p>
+        <p class="version">Version 1.0</p>
+    </footer>
+</body>
+</html>

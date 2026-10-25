@@ -1,0 +1,137 @@
+/* Q6 : box-sizing en premier */
+* {
+box-sizing: border-box;
+}
+/* Q2 : base de la page */
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+line-height: 1.6;
+color: #1f2430;
+background-color: #f4f6f9;
+}
+/* Q3 : sélecteurs de base */
+h1, h2 {
+color: #12314d;
+}
+a {
+color: #1b73ba;
+}
+a:hover {
+color: #e44d26;
+}
+/* Q4 : en-tête et menu */
+.entete {
+padding: 32px 20px 0;
+text-align: center;
+color: #ffffff;
+
+background-color: #12314d;
+}
+.entete h1 {
+margin: 0 0 6px;
+font-size: 40px;
+color: #ffffff;
+}
+.slogan {
+margin: 0 0 24px;
+color: #c7d2e0;
+}
+nav ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+nav li {
+display: inline-block;
+}
+nav a {
+display: block;
+padding: 12px 20px;
+color: #ffffff;
+text-decoration: none;
+border-bottom: 4px solid transparent;
+}
+/* Q5
+: survol du menu
+(corrige
+l
+'orange
+) */
+
+nav a:hover {
+color: #ffffff;
+border-bottom-color: #e44d26;
+}
+/* Q6
+: modèle de boîte */
+main {
+max-width: 800px;
+margin: 0 auto;
+padding: 0 20px;
+}
+section {
+margin: 24px 0;
+padding: 24px 28px;
+border: 1px solid #d8dde5;
+background-color: #ffffff;
+}
+h2 {
+margin-top: 0;
+padding-bottom: 8px;
+border-bottom: 3px solid #e44d26;
+}
+/* Q7
+: tableau */
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+padding: 10px 12px;
+text-align: left;
+border-bottom: 1px solid #d8dde5;
+}
+th {
+color: #ffffff;
+background-color: #1b73ba;
+}
+tbody tr:nth-child(even) {
+background-color: #f4f8fc;
+}
+/* Q8
+: formulaire */
+label {
+display: block;
+margin-top: 12px;
+font-weight: bold;
+}
+input, select {
+display: block;
+width: 100%;
+margin-top: 4px;
+padding: 8px 10px;
+border: 1px solid #b9c1cc;
+font-size: 16px;
+}
+button {
+margin-top: 20px;
+padding: 12px 28px;
+border: none;
+font-size: 16px;
+font-weight: bold;
+color: #ffffff;
+background-color: #e44d26;
+cursor: pointer;
+}
+/* Q8
+: pied de page */
+.pied {
+padding: 20px;
+text-align: center;
+color: #c7d2e0;
+background-color: #12314d;
+}
+.pied a {
+color: #ffffff;
+}

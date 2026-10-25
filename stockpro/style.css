@@ -1,0 +1,404 @@
+/* =========================================================================
+   EXERCICE 1 : VARIABLES CSS ET COULEURS
+   Centralisation de la charte graphique pour faciliter la maintenance.
+========================================================================= */
+:root {
+    --primaire: hsl(222, 65%, 38%);
+    --succes: rgb(22, 163, 74);
+    --attention: hsl(35, 92%, 45%);
+    --danger: crimson;
+    --neutre: slategray;
+    --fond: whitesmoke;
+    --surface: white;
+    --texte: #1f2937;
+    --bordure: rgb(0 0 0 / 10%); /* Utilisation du canal alpha moderne */
+    
+    /* Génération de couleurs dérivées avec color-mix */
+    --primaire-clair: color-mix(in srgb, var(--primaire) 12%, white);
+    --primaire-fonce: color-mix(in srgb, var(--primaire) 75%, black);
+    
+    /* Variables de dimensions et typographie */
+    --espace: 1rem;
+    --rayon: 10px;
+    --ombre: 0 2px 8px rgb(0 0 0 / 0.08);
+    --police-texte: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    --police-titre: Georgia, "Times New Roman", serif; 
+}
+
+/* =========================================================================
+   EXERCICE 2 : MODÈLE DE BOÎTE ET RESET
+========================================================================= */
+*, *::before, *::after {
+    box-sizing: border-box; /* Garantit que padding et borders sont inclus dans width/height */
+}
+
+body, h1, h2, h3, p, ul {
+    margin: 0;
+}
+
+body {
+    background-color: var(--fond);
+    color: var(--texte);
+}
+
+/* Style de carte commun partagé par plusieurs conteneurs */
+.carte-stat, .produit, .filtres, .mouvements {
+    background-color: var(--surface);
+    padding: var(--espace);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre);
+}
+
+/* =========================================================================
+   EXERCICE 3 : TYPOGRAPHIE FLUIDE (CLAMP)
+========================================================================= */
+body {
+    font-family: var(--police-texte);
+    line-height: 1.5;
+    font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); /* Rendu fluide sans Media Queries */
+}
+
+.titre-page {
+    font-family: var(--police-titre);
+    font-weight: 700;
+    margin-bottom: var(--espace);
+    font-size: clamp(1.6rem, 1rem + 2.5vw, 2.6rem);
+}
+
+h2 {
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+    margin-bottom: calc(0.75 * var(--espace));
+}
+
+.filtres h2, .carte-stat h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--neutre);
+}
+
+.valeur {
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums; /* Alignement propre des chiffres */
+}
+
+.ref {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--neutre);
+}
+
+.prix {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primaire); /* Issu de l'exercice 9 */
+}
+
+/* =========================================================================
+   EXERCICE 4 : DISPLAY ET ASTUCES CURRENTCOLOR
+========================================================================= */
+.filtres ul {
+    list-style: none;
+    padding: 0;
+}
+
+.filtres a {
+    display: block;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--rayon);
+    text-decoration: none;
+    color: inherit;
+}
+
+.filtres a:hover, .filtres a.actif {
+    background: var(--primaire-clair);
+    color: var(--primaire);
+}
+
+.filtres .aide {
+    padding: var(--espace);
+    background: var(--primaire-clair);
+    font-size: 0.85rem;
+    margin-top: var(--espace);
+}
+
+/* Badges (utilisation de la technique currentColor pour éviter la redondance de code) */
+.badge, .type {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Style de base d'un badge prenant la couleur courante comme référence */
+.badge {
+    color: var(--succes);
+    border: 1px solid currentColor;
+    background: color-mix(in srgb, currentColor 12%, white);
+}
+/* Variations d'état : il suffit de modifier la propriété 'color' ! */
+.stock-faible .badge { color: var(--attention); }
+.rupture .badge { color: var(--danger); }
+.archive .badge { color: var(--neutre); }
+
+.type.entree {
+    color: var(--succes);
+    border: 1px solid currentColor;
+    background: color-mix(in srgb, currentColor 12%, white);
+}
+
+.type.sortie {
+    color: var(--danger);
+    border: 1px solid currentColor;
+    background: color-mix(in srgb, currentColor 12%, white);
+}
+
+/* Indicateurs de tendance via pseudo-éléments */
+.tendance::before {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    margin-right: 0.25em;
+    background: currentColor;
+}
+.tendance.hausse { color: var(--succes); }
+.tendance.baisse { color: var(--danger); }
+
+/* =========================================================================
+   EXERCICE 5 : ALIGNEMENTS AVEC FLEXBOX
+========================================================================= */
+.entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espace);
+    flex-wrap: wrap;
+    padding: 0.75rem calc(1.5 * var(--espace));
+    background: var(--primaire);
+    color: white;
+}
+
+.logo {
+    font-family: var(--police-titre);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: color-mix(in srgb, var(--succes) 60%, white);
+}
+
+.menu {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.menu a {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--rayon);
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+}
+
+.menu a:hover, .menu a.actif {
+    opacity: 1;
+    background: var(--primaire-fonce);
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace);
+}
+
+.carte-stat {
+    flex: 1 1 180px; /* Les cartes grandissent/rétrécissent autour d'une base de 180px */
+}
+
+.btn {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--bordure);
+    background: var(--surface);
+    font: inherit;
+    cursor: pointer;
+    border-radius: var(--rayon);
+}
+
+.btn-primaire {
+    background: var(--succes);
+    color: white;
+}
+
+.btn-danger {
+    color: var(--danger);
+    border-color: currentColor;
+}
+.btn-danger:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.produit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto; /* Pousse les boutons tout en bas de la carte flex */
+}
+
+.actions .btn {
+    flex: 1;
+    min-width: 0;
+}
+
+.pied {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--espace);
+    padding: var(--espace);
+    background: var(--texte);
+    color: color-mix(in srgb, white 70%, var(--texte));
+}
+
+/* =========================================================================
+   EXERCICE 6 : MISES EN PAGE BIDIMENSIONNELLES (GRID)
+========================================================================= */
+.conteneur {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: calc(1.5 * var(--espace));
+    padding: calc(1.5 * var(--espace));
+    max-width: 1300px;
+    margin-inline: auto;
+}
+
+.grille-produits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); /* Grille adaptative (responsive) */
+    gap: var(--espace);
+}
+
+.produits {
+    margin-bottom: calc(1.5 * var(--espace));
+}
+
+.mouvements table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mouvements th, .mouvements td {
+    padding: 0.6rem;
+    text-align: left;
+    border-bottom: 1px solid var(--bordure);
+}
+
+.mouvements th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--neutre);
+}
+
+.mouvements tbody tr:nth-child(even) {
+    background: var(--primaire-clair);
+}
+
+/* =========================================================================
+   EXERCICE 7 : POSITIONNEMENT NORMAL ET HORS-FLUX
+========================================================================= */
+.entete {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.filtres {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+}
+
+.produit {
+    position: relative; /* Référentiel pour l'affichage du badge enfant */
+    padding-top: 2.5rem;
+    border-top: 4px solid var(--succes);
+}
+
+.produit .badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+
+/* Déclinaison des couleurs de bordure supérieure selon le statut */
+.stock-faible { border-top-color: var(--attention); }
+.rupture { border-top-color: var(--danger); }
+.archive { border-top-color: var(--neutre); }
+
+.alerte {
+    position: relative;
+    border-left: 5px solid var(--danger);
+    background: color-mix(in srgb, var(--danger) 10%, white);
+    color: var(--danger);
+    padding: var(--espace);
+    padding-right: 3rem;
+    margin-bottom: var(--espace);
+}
+
+.alerte .fermer {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%); /* Centrage vertical précis */
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* =========================================================================
+   EXERCICE 8 : MASQUER ET PROTÉGER L'AFFICHAGE DE DONNÉES
+========================================================================= */
+.prix-achat {
+    display: none; /* Retiré du flux */
+}
+
+.produit:hover .prix-achat {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--neutre);
+}
+
+.col-operateur {
+    visibility: hidden; /* Conserve son espace dans la grille du tableau */
+}
+
+.produit.archive {
+    opacity: 0.5; /* Atténuation visuelle */
+}
+.produit.archive:hover {
+    opacity: 1;
+}
+
+/* Utilitaire de masquage visuel (Reader-only) dédié à l'accessibilité */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}

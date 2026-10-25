@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Q1 : squelette du document -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Web Days 2026</title>
+</head>
+<body>
+<!-- Q2 : en-tête et menu -->
+<header class="entete">
+<h1>Web Days 2026</h1>
+<p class="slogan">La journée du développement web · 14 novembre 2026</p>
+<nav>
+<ul>
+<li><a href="#apropos">à propos</a></li>
+<li><a href="#programme">Programme</a></li>
+<li><a href="#inscription">Inscription</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<!-- Q3 : section À propos -->
+<section id="apropos">
+<h2>À propos</h2>
+<p>Une journée de conférences et d'ateliers pour <strong>découvrir</strong
+> le développement web,organisée par le club <em>Web</em> de l'école</p>
+
+<ul>
+<li>HTML5 et accessibilité</li>
+<li>CSS : sélecteurs et mise en page</li>
+<li>JavaScript et frameworks</li>
+</ul>
+</section>
+<!-- Q4 : tableau du programme -->
+<section id="programme">
+<h2>Programme</h2>
+<table>
+<thead>
+<tr>
+<th>Horaire</th>
+<th>Session</th>
+<th>Salle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09:00</td>
+<td>Accueil et café</td>
+<td>Hall</td>
+</tr>
+<tr>
+<td>09:30</td>
+<td>Keynote : le web en 2026</td>
+<td>Amphi B</td>
+</tr>
+<tr>
+<td>14:00</td>
+<td>Atelier HTML5 et CSS</td>
+<td>Salle 12</td>
+</tr>
+<tr>
+<td>16:00</td>
+<td>Table ronde : les métiers du web</td>
+<td>Amphi B</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- Q5 : formulaire d'inscription -->
+<section id="inscription">
+<h2>Inscription</h2>
+<form action="#" method="post">
+<label for="nom">Nom Complet</label>
+<input type="text" id="nom" name="nom" required>
+<label for="email">Adresse e-mail</label>
+<input type="email" id="email" name="email" required>
+<label for="profil">Profil</label>
+
+
+<select name="profil" id="profil">
+<option>Étudiant</option>
+<option>Enseignant</option>
+<option>Professionnel</option>
+</select>
+<button type="submit">Je m'inscris</button>
+</form>
+</section>
+</main>
+<!-- Q6 : pied de page -->
+<footer class="pied">
+<p>© 2026 Club Web — </p>
+<a href="mailto:contact@webdays.example">contact@webdays.example</a>
+</footer>
+</body>
+</html>
