@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une formation</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <header>
+        <h1>Ajouter une formation</h1>
+    </header>
+
+    <main>
+        <section>
+            <form>
+
+                <div class="form-group">
+                    <label for="titre">Intitulé de la formation *</label>
+                    <input type="text" id="titre" minlength="5" maxlength="80" required>
+                    <small>Entre 5 et 80 caractères.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="categorie">Catégorie *</label>
+                    <select id="categorie" required>
+                        <option value="">Choisir une catégorie</option>
+                        <option>Informatique</option>
+                        <option>Gestion</option>
+                        <option>Design</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="duree">Durée en heures *</label>
+                    <input type="number" id="duree" min="1" max="500" required>
+                    <small>Entre 1 et 500 heures.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="niveau">Niveau</label>
+                    <select id="niveau">
+                        <option>Débutant</option>
+                        <option>Intermédiaire</option>
+                        <option>Avancé</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail du formateur *</label>
+                    <input type="email" id="email" required>
+                    <span class="error">Veuillez saisir un e-mail valide.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date de début *</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="buttons">
+                    <button type="reset">Annuler</button>
+                    <button type="submit">Enregistrer</button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Gestion des formations - 2026</p>
+    </footer>
+
+</body>
+</html>
