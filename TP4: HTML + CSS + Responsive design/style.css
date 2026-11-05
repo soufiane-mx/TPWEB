@@ -1,0 +1,116 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 20px;
+}
+
+header h2 {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 30px 20px;
+}
+
+main h2 {
+    color: black;
+    text-align: center;
+}
+
+.Cartes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.Cartes .carte {
+    background-color: rgb(51, 207, 51);
+    width: 220px;
+    min-height: 170px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 10px;
+}
+
+.Cartes .carte button {
+    background-color: #FFFFFF;
+    color: #174342;
+    border: none;
+    border-radius: 25px;
+    width: 120px;
+    min-height: 40px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: rgb(59, 193, 59);
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tablette */
+@media screen and (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+    }
+    .Cartes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Cartes {
+        grid-template-columns: 1fr;
+    }
+
+    .Cartes .carte {
+        width: min(100%, 280px);
+    }
+}
